@@ -1,19 +1,24 @@
-import { useRef} from 'react'
 import './App.css'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+import Home from './pages/Home'
+import About from './pages/About'
+import Contact from './pages/Contact'
+import Error from './pages/Error';
 function App() {
-  const Count = useRef(0)
-  function fun(){
-    const ne = Count.current++
-    alert(ne)
-    
-  }
 
   return (
     <>
-    <h1>Fuck you</h1>
-    <div onClick={fun}>click now</div>
+    <BrowserRouter>
+    <Routes>
+      <Route path ="/" element = {<Home/>}/>
+      <Route path ="contact" element = {<Contact/>}/>
+      <Route path ="About" element = {<About/>}/>
+      <Route path ="*" element = {<Error/>}/>
+    </Routes>
+    </BrowserRouter>
     </>
+
   )
 }
 
